@@ -20,7 +20,7 @@ export class PatientService {
   }
 
   saveData(patient: Patient): Observable<any> {
-    return this.http.post(`${API_URL}/${CREATE_PATIENT_URL}`, patient);
+    return this.http.post(`${API_URL}/${CREATE_PATIENT_URL}`, patient, { responseType: 'text' as 'json' });
   }
 
   updateData(id: String, patient: Patient): Observable<any> {
