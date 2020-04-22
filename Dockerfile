@@ -1,4 +1,4 @@
-# Stage 1
+# Stage  1
 FROM node:12.16-alpine as node
 
 WORKDIR /usr/src/app
@@ -27,8 +27,10 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy from the stahg 1
 COPY --from=node /usr/src/app/dist/patientInformationApp /usr/share/nginx/html
 
-RUN chgrp -R 0 /var/cache/ /var/log/ /var/run/ && \
-    chmod -R g=u /var/cache/ /var/log/ /var/run/
+RUN chmod -R 777 /var/log/nginx /var/cache/nginx /var/run \
+     && chgrp -R 0 /etc/nginx \
+     && chmod -R g+rwX /etc/nginx \
+     && rm /etc/nginx/conf.d/default.conf
 
 EXPOSE 8080
 
