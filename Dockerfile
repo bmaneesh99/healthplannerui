@@ -29,8 +29,7 @@ COPY --from=node /usr/src/app/dist/patientInformationApp /usr/share/nginx/html
 
 RUN chmod -R 777 /var/log/nginx /var/cache/nginx /var/run \
      && chgrp -R 0 /etc/nginx \
-     && chmod -R g+rwX /etc/nginx \
-     && rm /etc/nginx/conf.d/default.conf
+     && chmod -R g+rwX /etc/nginx
 
 EXPOSE 8080
 
